@@ -22,7 +22,7 @@ def load_lost_files():
     try:
         file = open("./../dataset/replace_images.txt", "r")
     except IOError:
-        print 'cannot read file'
+        print('cannot read file')
 
     file_names = []
     for line in file:
@@ -53,9 +53,9 @@ for file in files:
     try:
         face_frame = cv2.resize(face_frame, (224, 224))
         cv2.imwrite(filename, face_frame)
-        print "file wrote: " + filename
+        print("file wrote: " + filename)
     except IOError:
-        print 'cannot write image'
+        print('cannot write image')
 
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break

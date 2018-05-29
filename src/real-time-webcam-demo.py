@@ -19,7 +19,7 @@ class PredictionThread(threading.Thread):
         global face_frame
         global running
         # Load the VGG16 network
-        self.model = load_model('./../models/detect_emo_model2.h5')
+        self.model = load_model('./../models/detect_emo_model.h5')
         """with CustomObjectScope({'relu6': keras.applications.mobilenet.relu6,
                                                 'DepthwiseConv2D': keras.applications.mobilenet.DepthwiseConv2D}):
                             self.model = load_model('./../models/mobileNet_detect_emo_model.h5')"""
@@ -53,7 +53,7 @@ class PredictionThread(threading.Thread):
 
         return_label = np.argmax(prediction) # returns max index
 
-        print prediction, ": ", label_list[return_label]
+        print(prediction, ": ", label_list[return_label])
         return return_label
 
 
@@ -61,9 +61,9 @@ cascPath = "./../models/haarcascade_frontalface_default.xml"
 faceCascade = cv2.CascadeClassifier(cascPath)
 
 smiling_emoji = cv2.imread("./../images/Smiling_Emoji.png")
-smiling_emoji = cv2.resize(smiling_emoji, (100, 100))
+#smiling_emoji = cv2.resize(smiling_emoji, (100, 100))
 neutral_emoji = cv2.imread("./../images/neutral_emoji.png")
-neutral_emoji = cv2.resize(neutral_emoji, (100, 100))
+#neutral_emoji = cv2.resize(neutral_emoji, (100, 100))
 
 emoji_list = [neutral_emoji, smiling_emoji]
 label_list = ["neutral", "smile"]

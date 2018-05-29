@@ -28,7 +28,7 @@ image_count = 200
 counter = 1
 
 # change this to match the facial expression being captured
-label_name = "neutral"
+label_name = "smile"
 
 while counter <= image_count:
     # Capture frame-by-frame
@@ -44,7 +44,7 @@ while counter <= image_count:
         face_frame = cv2.resize(face_frame, (224, 224))
         cv2.imwrite(filename, face_frame)
     except IOError:
-        print 'cannot write image'
+        print('cannot write image')
 
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
