@@ -9,20 +9,40 @@ training. Instead the emotion network is trained with own pictures by running ge
 capture with the webcam and saves only the face frame.
 
 ## Instructions
+Clone the repository to a targetDirectory
+####Install on Mac (Linux should be similar but not tested)
+Originally made for Recommended installation in a python2.7 virtualenv with tensorflow, keras and openCV
 
-Recomended installation in a python2.7 virtualenv with tensorflow, keras and openCV
+#####Install tensorflow in a virtualenv\
+1. sudo easy_install pip                 # if pip is not installed
+2. pip install --upgrade virtualenv      
+3. virtualenv --system-site-packages targetDirectory # for Python 2.7
+4. cd targetDirectory
+5. source ./bin/activate
+6. easy_install -U pip
+7. pip install --upgrade tensorflow      # for Python 2.7
 
-Install requirements listed in REQUIREMENTS.txt
-pip install requirements.txt
+#####Install requirements listed in REQUIREMENTS.txt
+1. pip install requirements.txt
 
-Or manually:
-pip install --upgrade tensorflow
+#####Or manually:
+1. pip install keras
+2. pip install opencv-python
+3. pip install Pillow
 
-pip install keras
+#### Install on windows
+Installing on windows should be similar to installing on mac except you will have to use python 3.5
+#####Install tensorflow in a virtualenv\
+1. sudo easy_install pip                 # if pip is not installed
+2. pip3 install --upgrade virtualenv 
+3. virtualenv --system-site-packages -p python3 targetDirectory # for Python 3.n
+4. cd targetDirectory
+5. source ./bin/activate
+6. easy_install -U pip
+7. pip3 install --upgrade tensorflow     # for Python 3.n
 
-pip install opencv-python
-
-pip install Pillow
+#####Install requirements listed in REQUIREMENTS.txt
+1. pip3 install requirements.txt
 
 ### Creating training data
 
@@ -32,8 +52,9 @@ only appear in the file name to indicate the label.
 
 
 1. Decide how many facial expressions you want the classifier to recognize. Create a 
-new directory with the label name so that every directory in dataset contains a directory for each label. For example 
-with label names 'neutral' and 'smile' the directory structure would look like this:\
+new directory called 'dataset' at project root and then create three directories called 'train_data', 'valid_data' and 
+ 'test_data'. All three directories should contain one directory for each label name. 
+  For example with label names 'neutral' and 'smile' the directory structure would look like this:\
 dataset/\
 ├── test_data\
 │   ├── neutral\
@@ -64,8 +85,8 @@ validation data. For example if 200 images where taken, select 120 images and dr
 train_emotion_model.py. 
 2. If training the model with different parameters, change the batch_size, validation_steps, steps_per_epoch and epochs
 accordingly. 
-3. When training is done and you have successfully saved the model to disk you can run the  
-
+3. To train with more classes you will need to make sure the last dense layer has the correct output and that 
+class_labels contains all the necessary labels.
 
 ### Running the real time classifier
 1. Open real-time-webcam-demo.py.

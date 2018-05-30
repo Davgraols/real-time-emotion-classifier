@@ -19,7 +19,7 @@ class PredictionThread(threading.Thread):
         global face_frame
         global running
         # Load the VGG16 network
-        self.model = load_model('./../models/detect_emo_model.h5')
+        self.model = load_model('./../models/detect_emo_model4.h5')
         """with CustomObjectScope({'relu6': keras.applications.mobilenet.relu6,
                                                 'DepthwiseConv2D': keras.applications.mobilenet.DepthwiseConv2D}):
                             self.model = load_model('./../models/mobileNet_detect_emo_model.h5')"""
@@ -40,7 +40,7 @@ class PredictionThread(threading.Thread):
                     face_frame = cv2.resize(frame[y:y + h, x:x + w], (224, 224))
 
                 label = self.predict(cv2.resize(face_frame, (224,224)))
-                time.sleep(1)
+                #time.sleep(1)
             else:
                 label = self.predict(cv2.resize(face_frame, (224, 224)))
                 time.sleep(1)
@@ -60,16 +60,19 @@ class PredictionThread(threading.Thread):
 cascPath = "./../models/haarcascade_frontalface_default.xml"
 faceCascade = cv2.CascadeClassifier(cascPath)
 
+# load the emojis from disk
 smiling_emoji = cv2.imread("./../images/Smiling_Emoji.png")
-#smiling_emoji = cv2.resize(smiling_emoji, (100, 100))
+#smiling_emoji = cv2.resize(smiling_emoji, (100, 100)) # If face tracking runs slow
 neutral_emoji = cv2.imread("./../images/neutral_emoji.png")
-#neutral_emoji = cv2.resize(neutral_emoji, (100, 100))
+#neutral_emoji = cv2.resize(neutral_emoji, (100, 100)) # If face tracking runs slow
+surprised_emoji = cv2.imread("./../images/Surprised_Face_Emoji.png")
+angry_emoji = cv2.imread("./../images/Angry_Emoji.png")
 
-emoji_list = [neutral_emoji, smiling_emoji]
-label_list = ["neutral", "smile"]
+emoji_list = [neutral_emoji, smiling_emoji, surprised_emoji, angry_emoji]
+label_list = ["neutral", "smile", "surprise", "angry"]
 
 
-emoji_mode = True
+emoji_mode = True  # set to True if you want to display an emoji corresponding to the label over your face
 
 video_capture = cv2.VideoCapture(0)
 ret, frame = video_capture.read()
@@ -77,6 +80,10 @@ keras_thread = PredictionThread()
 running = True
 keras_thread.start()
 label = 0
+
+# Define the codec and create VideoWriter object
+# fourcc = cv2.VideoWriter_fourcc(*'XVID') # If you want to capture the result as a video
+# out = cv2.VideoWriter('output.avi',fourcc, 20.0, (640, 480)) # for video capture
 
 while True:
     # Capture frame-by-frame
@@ -103,6 +110,7 @@ while True:
     # Display the resulting frame
     cv2.putText(frame, "Label: {}".format(label_list[label]), (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (0, 255, 0), 2)
     cv2.imshow('Video', frame)
+    #out.write(frame) # for video
 
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break

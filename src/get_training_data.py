@@ -28,7 +28,7 @@ image_count = 200
 counter = 1
 
 # change this to match the facial expression being captured
-label_name = "smile"
+label_name = "neutral"
 
 while counter <= image_count:
     # Capture frame-by-frame
