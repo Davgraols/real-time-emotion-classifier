@@ -15,7 +15,7 @@ Clone the repository to a targetDirectory
 
 Originally made for Recommended installation in a python2.7 virtualenv with tensorflow, keras and openCV
 
-##### Install tensorflow in a virtualenv\
+##### Install tensorflow in a virtualenv
 1. sudo easy_install pip                 # if pip is not installed
 2. pip install --upgrade virtualenv      
 3. virtualenv --system-site-packages targetDirectory # for Python 2.7
@@ -34,7 +34,7 @@ Originally made for Recommended installation in a python2.7 virtualenv with tens
 
 #### Install on windows
 Installing on windows should be similar to installing on mac except you will have to use python 3.5
-##### Install tensorflow in a virtualenv\
+##### Install tensorflow in a virtualenv
 1. sudo easy_install pip                 # if pip is not installed
 2. pip3 install --upgrade virtualenv 
 3. virtualenv --system-site-packages -p python3 targetDirectory # for Python 3.n
