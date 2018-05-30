@@ -10,10 +10,12 @@ capture with the webcam and saves only the face frame.
 
 ## Instructions
 Clone the repository to a targetDirectory
-####Install on Mac (Linux should be similar but not tested)
+
+#### Install on Mac (Linux should be similar but not tested)
+
 Originally made for Recommended installation in a python2.7 virtualenv with tensorflow, keras and openCV
 
-#####Install tensorflow in a virtualenv\
+##### Install tensorflow in a virtualenv\
 1. sudo easy_install pip                 # if pip is not installed
 2. pip install --upgrade virtualenv      
 3. virtualenv --system-site-packages targetDirectory # for Python 2.7
@@ -22,17 +24,17 @@ Originally made for Recommended installation in a python2.7 virtualenv with tens
 6. easy_install -U pip
 7. pip install --upgrade tensorflow      # for Python 2.7
 
-#####Install requirements listed in REQUIREMENTS.txt
+##### Install requirements listed in REQUIREMENTS.txt
 1. pip install requirements.txt
 
-#####Or manually:
+##### Or manually:
 1. pip install keras
 2. pip install opencv-python
 3. pip install Pillow
 
 #### Install on windows
 Installing on windows should be similar to installing on mac except you will have to use python 3.5
-#####Install tensorflow in a virtualenv\
+##### Install tensorflow in a virtualenv\
 1. sudo easy_install pip                 # if pip is not installed
 2. pip3 install --upgrade virtualenv 
 3. virtualenv --system-site-packages -p python3 targetDirectory # for Python 3.n
@@ -41,7 +43,7 @@ Installing on windows should be similar to installing on mac except you will hav
 6. easy_install -U pip
 7. pip3 install --upgrade tensorflow     # for Python 3.n
 
-#####Install requirements listed in REQUIREMENTS.txt
+##### Install requirements listed in REQUIREMENTS.txt
 1. pip3 install requirements.txt
 
 ### Creating training data
